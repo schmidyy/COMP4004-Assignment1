@@ -1,15 +1,33 @@
 package Strategy;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import Model.Card;
 
 public class HandIdentifier {
 	
+	// Private methods
 	private static boolean is10toA(int[] ranks) {
 		Arrays.sort(ranks);
 		return (ranks[0] == 1 && ranks[1] == 10 && ranks[2] == 11 && ranks[3] == 12 && ranks[4] == 13);
 	}
 	
+	private static HashMap<Integer, Integer> cardsPerRank(Card[] hand) {
+		// [Card rank : Number of occurrences]
+		HashMap<Integer, Integer>  cardCount = new HashMap<>();
+		for (int i = 0; i < hand.length; i++) {
+			int rank = hand[i].getRank();
+			Integer count = cardCount.get(rank);
+			if (count == null) {
+				cardCount.put(rank, 1);
+			} else {
+				cardCount.put(rank, count + 1);
+			}
+		}
+		return cardCount;
+	}
+	
+	// Public methods
 	public static boolean isStraight(Card[] hand) {
 		if (hand == null || hand.length != 5) {
 	        return false;
@@ -58,6 +76,15 @@ public class HandIdentifier {
 		}
 		
 		return (isStraightFlush(hand) && is10toA(ranks));
+	}
+	
+	public static boolean isFourOfAKind(Card[] hand) {
+		HashMap<Integer, Integer>  cardCount = cardsPerRank(hand);
+		
+		if (cardCount.containsValue(4)) {
+			return true;
+		}
+		return false;
 	}
 	
 }
