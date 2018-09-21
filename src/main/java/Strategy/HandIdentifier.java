@@ -5,7 +5,7 @@ import Model.Card;
 
 public class HandIdentifier {
 	
-	public boolean isStraight(Card[] hand) {
+	public static boolean isStraight(Card[] hand) {
 		if (hand == null || hand.length != 5) {
 	        return false;
 	    }
@@ -29,7 +29,7 @@ public class HandIdentifier {
 		}
 	}
 	
-	public boolean isFlush(Card[] hand) {
+	public static boolean isFlush(Card[] hand) {
 		if (hand == null || hand.length != 5) {
 	        return false;
 	    }

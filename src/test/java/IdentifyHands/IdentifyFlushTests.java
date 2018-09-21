@@ -7,7 +7,6 @@ import Strategy.HandIdentifier;
 public class IdentifyFlushTests extends TestCase {
 	
 	public void testDiamondsFlush() {
-		HandIdentifier identifier = new HandIdentifier();
 		Card[] hand = new Card[5];
 		hand[0] = new Card(5, 1); //5D
 		hand[1] = new Card(7, 1); //7D
@@ -15,11 +14,10 @@ public class IdentifyFlushTests extends TestCase {
 		hand[3] = new Card(9, 1); //9D
 		hand[4] = new Card(10, 1); //10D
 		
-		assertTrue(identifier.isFlush(hand));
+		assertTrue(HandIdentifier.isFlush(hand));
 	}
 	
 	public void testClubsFlush() {
-		HandIdentifier identifier = new HandIdentifier();
 		Card[] hand = new Card[5];
 		hand[0] = new Card(5, 2); //5C
 		hand[1] = new Card(7, 2); //7C
@@ -27,11 +25,10 @@ public class IdentifyFlushTests extends TestCase {
 		hand[3] = new Card(9, 2); //9C
 		hand[4] = new Card(10, 2); //10C
 		
-		assertTrue(identifier.isFlush(hand));
+		assertTrue(HandIdentifier.isFlush(hand));
 	}
 	
 	public void testHeartsFlush() {
-		HandIdentifier identifier = new HandIdentifier();
 		Card[] hand = new Card[5];
 		hand[0] = new Card(5, 3); //5H
 		hand[1] = new Card(7, 3); //7H
@@ -39,11 +36,10 @@ public class IdentifyFlushTests extends TestCase {
 		hand[3] = new Card(9, 3); //9H
 		hand[4] = new Card(10, 3); //10H
 		
-		assertTrue(identifier.isFlush(hand));
+		assertTrue(HandIdentifier.isFlush(hand));
 	}
 	
 	public void testSpadesFlush() {
-		HandIdentifier identifier = new HandIdentifier();
 		Card[] hand = new Card[5];
 		hand[0] = new Card(5, 4); //5S
 		hand[1] = new Card(7, 4); //7S
@@ -51,11 +47,10 @@ public class IdentifyFlushTests extends TestCase {
 		hand[3] = new Card(9, 4); //9S
 		hand[4] = new Card(10, 4); //10S
 		
-		assertTrue(identifier.isFlush(hand));
+		assertTrue(HandIdentifier.isFlush(hand));
 	}
 	
 	public void testFakeFlush() {
-		HandIdentifier identifier = new HandIdentifier();
 		Card[] hand = new Card[5];
 		hand[0] = new Card(5, 3); //5H
 		hand[1] = new Card(7, 4); //7S
@@ -63,7 +58,7 @@ public class IdentifyFlushTests extends TestCase {
 		hand[3] = new Card(9, 1); //9D
 		hand[4] = new Card(10, 4); //10S
 		
-		assertFalse(identifier.isFlush(hand));
+		assertFalse(HandIdentifier.isFlush(hand));
 	}
 	
 }
