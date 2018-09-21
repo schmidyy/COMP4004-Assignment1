@@ -29,4 +29,17 @@ public class HandIdentifier {
 		}
 	}
 	
+	public boolean isFlush(Card[] hand) {
+		if (hand == null || hand.length != 5) {
+	        return false;
+	    }
+		
+		for (int i = 0; i < hand.length - 1; i++) {
+			if (hand[i].getSuit() != hand[i + 1].getSuit()) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
 }
