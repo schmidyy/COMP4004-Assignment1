@@ -42,4 +42,8 @@ public class HandIdentifier {
 		return true;
 	}
 	
+	public static boolean isStraightFlush(Card[] hand) {
+		return (HandIdentifier.isStraight(hand) && HandIdentifier.isFlush(hand));
+	}
+	
 }
