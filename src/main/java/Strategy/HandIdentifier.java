@@ -5,6 +5,11 @@ import Model.Card;
 
 public class HandIdentifier {
 	
+	private static boolean is10toA(int[] ranks) {
+		Arrays.sort(ranks);
+		return (ranks[0] == 1 && ranks[1] == 10 && ranks[2] == 11 && ranks[3] == 12 && ranks[4] == 13);
+	}
+	
 	public static boolean isStraight(Card[] hand) {
 		if (hand == null || hand.length != 5) {
 	        return false;
@@ -17,7 +22,7 @@ public class HandIdentifier {
 		Arrays.sort(ranks);
 		
 		// Need to check for 10 to A straight first
-		if (ranks[0] == 1 && ranks[1] == 10 && ranks[2] == 11 && ranks[3] == 12 && ranks[4] == 13) {
+		if (is10toA(ranks)) {
 			return true;
 		} else {
 			for (int i = 0; i < ranks.length - 1; i++) {
@@ -43,7 +48,16 @@ public class HandIdentifier {
 	}
 	
 	public static boolean isStraightFlush(Card[] hand) {
-		return (HandIdentifier.isStraight(hand) && HandIdentifier.isFlush(hand));
+		return (isStraight(hand) && isFlush(hand));
+	}
+	
+	public static boolean isRoyalFlush(Card[] hand) {
+		int[] ranks = new int[5];
+		for (int i = 0; i < hand.length; i++) {
+			ranks[i] = hand[i].getRank();
+		}
+		
+		return (isStraightFlush(hand) && is10toA(ranks));
 	}
 	
 }
