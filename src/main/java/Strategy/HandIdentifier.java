@@ -105,4 +105,16 @@ public class HandIdentifier {
 		return false;
 	}
 	
+	public static boolean isTwoPair(Card[] hand) {
+		HashMap<Integer, Integer>  cardCount = cardsPerRank(hand);
+		
+		int numPairs = 0;
+		for (Integer count : cardCount.values()) {
+			if (count == 2) {
+				numPairs++;
+			}
+		}
+		return (numPairs == 2);
+	}
+	
 }
