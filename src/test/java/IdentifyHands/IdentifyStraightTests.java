@@ -2,6 +2,7 @@ package IdentifyHands;
 
 import junit.framework.TestCase;
 import Model.Card;
+import Strategy.HandIdentifier;
 
 public class IdentifyStraightTests extends TestCase {
 	
