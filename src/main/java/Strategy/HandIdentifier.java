@@ -96,4 +96,13 @@ public class HandIdentifier {
 		return false;
 	}
 	
+	public static boolean isThreeOfAKind(Card[] hand) {
+		HashMap<Integer, Integer>  cardCount = cardsPerRank(hand);
+		
+		if (cardCount.containsValue(3)) {
+			return true;
+		}
+		return false;
+	}
+	
 }
