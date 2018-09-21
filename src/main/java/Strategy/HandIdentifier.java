@@ -87,4 +87,13 @@ public class HandIdentifier {
 		return false;
 	}
 	
+	public static boolean isFullHouse(Card[] hand) {
+		HashMap<Integer, Integer>  cardCount = cardsPerRank(hand);
+		
+		if (cardCount.containsValue(3) && cardCount.containsValue(2)) {
+			return true;
+		}
+		return false;
+	}
+	
 }
