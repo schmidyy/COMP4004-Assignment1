@@ -99,7 +99,7 @@ public class HandIdentifier {
 	public static boolean isThreeOfAKind(Card[] hand) {
 		HashMap<Integer, Integer>  cardCount = cardsPerRank(hand);
 		
-		if (cardCount.containsValue(3)) {
+		if (cardCount.containsValue(3) && !isFourOfAKind(hand) && !isFullHouse(hand)) {
 			return true;
 		}
 		return false;
@@ -115,6 +115,18 @@ public class HandIdentifier {
 			}
 		}
 		return (numPairs == 2);
+	}
+	
+	public static boolean isPair(Card[] hand) {
+		HashMap<Integer, Integer>  cardCount = cardsPerRank(hand);
+		
+		int numPairs = 0;
+		for (Integer count : cardCount.values()) {
+			if (count == 2) {
+				numPairs++;
+			}
+		}
+		return (numPairs == 1 && !isFullHouse(hand));
 	}
 	
 }
