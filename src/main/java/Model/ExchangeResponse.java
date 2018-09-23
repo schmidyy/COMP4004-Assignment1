@@ -1,8 +1,8 @@
 package Model;
 
 public final class ExchangeResponse {
-	private final boolean[] cardsToExchange;
-	private final int numExchanges;
+	private boolean[] cardsToExchange;
+	private int numExchanges;
 	
 	public ExchangeResponse(boolean[] cardsToExchange, int numExchanges) {
         this.cardsToExchange = cardsToExchange;
@@ -15,5 +15,13 @@ public final class ExchangeResponse {
 	
 	public int getNumExchanges() {
 		return this.numExchanges;
+	}
+	
+	public void setCardsToExchange(boolean[] cardsToExchange) {
+		this.cardsToExchange = cardsToExchange;
+	}
+	
+	public void setNumExchanges(int numExchanges) {
+		this.numExchanges = numExchanges;
 	}
 }

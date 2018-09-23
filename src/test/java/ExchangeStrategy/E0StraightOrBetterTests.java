@@ -1,8 +1,11 @@
 package ExchangeStrategy;
 
 import junit.framework.TestCase;
+
+import java.util.Arrays;
 import Model.Card;
 import Model.ExchangeResponse;
+import Strategy.Exchange;
 
 public class E0StraightOrBetterTests extends TestCase {
 	
@@ -16,7 +19,7 @@ public class E0StraightOrBetterTests extends TestCase {
 		
 		ExchangeResponse response = Exchange.analyze(hand);
 		assertEquals(0, response.getNumExchanges());
-		assertEquals(new boolean[]{false, false, false, false, false}, response.getCardsToExchange());
+		assertTrue(Arrays.equals(new boolean[]{false, false, false, false, false}, response.getCardsToExchange()));
 	}
 	
 	public void testStraightFlushExchangesNoCards() {
@@ -29,7 +32,7 @@ public class E0StraightOrBetterTests extends TestCase {
 		
 		ExchangeResponse response = Exchange.analyze(hand);
 		assertEquals(0, response.getNumExchanges());
-		assertEquals(new boolean[]{false, false, false, false, false}, response.getCardsToExchange());
+		assertTrue(Arrays.equals(new boolean[]{false, false, false, false, false}, response.getCardsToExchange()));
 	}
 	
 	public void testFourOfAKindExchangesNoCards() {
@@ -42,7 +45,7 @@ public class E0StraightOrBetterTests extends TestCase {
 		
 		ExchangeResponse response = Exchange.analyze(hand);
 		assertEquals(0, response.getNumExchanges());
-		assertEquals(new boolean[]{false, false, false, false, false}, response.getCardsToExchange());
+		assertTrue(Arrays.equals(new boolean[]{false, false, false, false, false}, response.getCardsToExchange()));
 	}
 	
 	public void testFullHouseExchangesNoCards() {
@@ -55,7 +58,7 @@ public class E0StraightOrBetterTests extends TestCase {
 		
 		ExchangeResponse response = Exchange.analyze(hand);
 		assertEquals(0, response.getNumExchanges());
-		assertEquals(new boolean[]{false, false, false, false, false}, response.getCardsToExchange());
+		assertTrue(Arrays.equals(new boolean[]{false, false, false, false, false}, response.getCardsToExchange()));
 	}
 	
 	public void testFlushExchangesNoCards() {
@@ -68,7 +71,7 @@ public class E0StraightOrBetterTests extends TestCase {
 		
 		ExchangeResponse response = Exchange.analyze(hand);
 		assertEquals(0, response.getNumExchanges());
-		assertEquals(new boolean[]{false, false, false, false, false}, response.getCardsToExchange());
+		assertTrue(Arrays.equals(new boolean[]{false, false, false, false, false}, response.getCardsToExchange()));
 	}
 	
 	public void testStraightExchangesNoCards() {
@@ -81,7 +84,7 @@ public class E0StraightOrBetterTests extends TestCase {
 		
 		ExchangeResponse response = Exchange.analyze(hand);
 		assertEquals(0, response.getNumExchanges());
-		assertEquals(new boolean[]{false, false, false, false, false}, response.getCardsToExchange());
+		assertTrue(Arrays.equals(new boolean[]{false, false, false, false, false}, response.getCardsToExchange()));
 	}
 	
 }
