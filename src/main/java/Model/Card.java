@@ -14,7 +14,6 @@ public final class Card {
     public final static int SPADES   = 4;
 
     // Kinds of ranks
-    public final static int ACE   = 1;
     public final static int DEUCE = 2;
     public final static int THREE = 3;
     public final static int FOUR  = 4;
@@ -27,6 +26,7 @@ public final class Card {
     public final static int JACK  = 11;
     public final static int QUEEN = 12;
     public final static int KING  = 13;
+    public final static int ACE   = 14;
 
     public Card(int rank, int suit) {
         assert isValidRank(rank);
@@ -48,7 +48,7 @@ public final class Card {
     }
 
     public static boolean isValidRank(int rank) {
-        return ACE <= rank && rank <= KING;
+        return DEUCE <= rank && rank <= ACE;
     }
 
     public static boolean isValidSuit(int suit) {

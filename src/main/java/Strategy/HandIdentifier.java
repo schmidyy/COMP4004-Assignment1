@@ -9,7 +9,7 @@ public class HandIdentifier {
 	// Private methods
 	private static boolean is10toA(int[] ranks) {
 		Arrays.sort(ranks);
-		return (ranks[0] == 1 && ranks[1] == 10 && ranks[2] == 11 && ranks[3] == 12 && ranks[4] == 13);
+		return (ranks[0] == 10 && ranks[1] == 11 && ranks[2] == 12 && ranks[3] == 13 && ranks[4] == 14);
 	}
 	
 	public static HashMap<Integer, Integer> cardsPerRank(Card[] hand) {
@@ -39,8 +39,8 @@ public class HandIdentifier {
 		}
 		Arrays.sort(ranks);
 		
-		// Need to check for 10 to A straight first
-		if (is10toA(ranks)) {
+		// Need to check for A to 5 straight first
+		if (ranks[0] == 2 && ranks[1] == 3 && ranks[2] == 4 && ranks[3] == 5 && ranks[4] == 14) {
 			return true;
 		} else {
 			for (int i = 0; i < ranks.length - 1; i++) {

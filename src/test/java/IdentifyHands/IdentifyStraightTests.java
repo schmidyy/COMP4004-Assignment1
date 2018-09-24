@@ -8,7 +8,7 @@ public class IdentifyStraightTests extends TestCase {
 	
 	public void testAto5Straight() {
 		Card[] hand = new Card[5];
-		hand[0] = new Card(1, 1); //AD
+		hand[0] = new Card(14, 1); //AD
 		hand[1] = new Card(2, 3); //2H
 		hand[2] = new Card(3, 2); //3C
 		hand[3] = new Card(4, 2); //4C
@@ -34,7 +34,7 @@ public class IdentifyStraightTests extends TestCase {
 		hand[1] = new Card(11, 3); //JH
 		hand[2] = new Card(12, 2); //QC
 		hand[3] = new Card(13, 2); //KC
-		hand[4] = new Card(1, 1); //AD
+		hand[4] = new Card(14, 1); //AD
 		
 		assertTrue(HandIdentifier.isStraight(hand));
 	}

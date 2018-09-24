@@ -12,7 +12,7 @@ public class IdentifyRoyalFlushTests extends TestCase {
 		hand[1] = new Card(11, 1); //JD
 		hand[2] = new Card(12, 1); //QD
 		hand[3] = new Card(13, 1); //KD
-		hand[4] = new Card(1, 1); //AD
+		hand[4] = new Card(14, 1); //AD
 		
 		assertTrue(HandIdentifier.isRoyalFlush(hand));
 	}
@@ -23,7 +23,7 @@ public class IdentifyRoyalFlushTests extends TestCase {
 		hand[1] = new Card(11, 2); //JC
 		hand[2] = new Card(12, 2); //QC
 		hand[3] = new Card(13, 2); //KC
-		hand[4] = new Card(1, 2); //AC
+		hand[4] = new Card(14, 2); //AC
 		
 		assertTrue(HandIdentifier.isRoyalFlush(hand));
 	}
@@ -34,7 +34,7 @@ public class IdentifyRoyalFlushTests extends TestCase {
 		hand[1] = new Card(11, 3); //JH
 		hand[2] = new Card(12, 3); //QH
 		hand[3] = new Card(13, 3); //KH
-		hand[4] = new Card(1, 3); //AH
+		hand[4] = new Card(14, 3); //AH
 		
 		assertTrue(HandIdentifier.isRoyalFlush(hand));
 	}
@@ -45,7 +45,7 @@ public class IdentifyRoyalFlushTests extends TestCase {
 		hand[1] = new Card(11, 4); //JS
 		hand[2] = new Card(12, 4); //QS
 		hand[3] = new Card(13, 4); //KS
-		hand[4] = new Card(1, 4); //AS
+		hand[4] = new Card(14, 4); //AS
 		
 		assertTrue(HandIdentifier.isRoyalFlush(hand));
 	}
@@ -56,7 +56,7 @@ public class IdentifyRoyalFlushTests extends TestCase {
 		hand[1] = new Card(11, 4); //JS
 		hand[2] = new Card(12, 2); //QC
 		hand[3] = new Card(13, 1); //KD
-		hand[4] = new Card(1, 4); //AS
+		hand[4] = new Card(14, 4); //AS
 		
 		assertFalse(HandIdentifier.isRoyalFlush(hand));
 	}
@@ -67,7 +67,7 @@ public class IdentifyRoyalFlushTests extends TestCase {
 		hand[1] = new Card(11, 4); //JS
 		hand[2] = new Card(4, 4); //4S
 		hand[3] = new Card(13, 4); //KS
-		hand[4] = new Card(1, 4); //AS
+		hand[4] = new Card(14, 4); //AS
 		
 		assertFalse(HandIdentifier.isRoyalFlush(hand));
 	}

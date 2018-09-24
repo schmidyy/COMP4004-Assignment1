@@ -8,7 +8,7 @@ public class IdentifyStraightFlushTests extends TestCase {
 	
 	public void testAto5StraightFlush() {
 		Card[] hand = new Card[5];
-		hand[0] = new Card(1, 1); //AD
+		hand[0] = new Card(14, 1); //AD
 		hand[1] = new Card(2, 1); //2D
 		hand[2] = new Card(3, 1); //3D
 		hand[3] = new Card(4, 1); //4D
@@ -33,7 +33,7 @@ public class IdentifyStraightFlushTests extends TestCase {
 		hand[0] = new Card(3, 1); //3D
 		hand[1] = new Card(7, 1); //7D
 		hand[2] = new Card(10, 1); //10D
-		hand[3] = new Card(1, 1); //AD
+		hand[3] = new Card(14, 1); //AD
 		hand[4] = new Card(13, 1); //KD
 		
 		assertFalse(HandIdentifier.isStraightFlush(hand));

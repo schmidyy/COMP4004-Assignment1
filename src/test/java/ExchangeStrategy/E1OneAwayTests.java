@@ -14,7 +14,7 @@ public class E1OneAwayTests extends TestCase {
 		hand[1] = new Card(11, 1); //JD
 		hand[2] = new Card(7, 2); //7C **
 		hand[3] = new Card(13, 1); //KD
-		hand[4] = new Card(1, 1); //AD
+		hand[4] = new Card(14, 1); //AD
 		
 		ExchangeResponse response = Exchange.analyze(hand);
 		assertEquals(1, response.getNumExchanges());
@@ -23,7 +23,7 @@ public class E1OneAwayTests extends TestCase {
 	
 	public void testOneAwayFromStraightFlushExchangesOneCard() {
 		Card[] hand = new Card[5];
-		hand[0] = new Card(1, 1); //AD
+		hand[0] = new Card(14, 1); //AD
 		hand[1] = new Card(2, 1); //2D
 		hand[2] = new Card(3, 1); //3D
 		hand[3] = new Card(4, 1); //4D
@@ -40,11 +40,11 @@ public class E1OneAwayTests extends TestCase {
 		hand[1] = new Card(13, 2); //KC
 		hand[2] = new Card(13, 3); //KH
 		hand[3] = new Card(5, 4); //5S
-		hand[4] = new Card(1, 1); //AD **
+		hand[4] = new Card(14, 1); //AD **
 		
 		ExchangeResponse response = Exchange.analyze(hand);
 		assertEquals(1, response.getNumExchanges());
-		assertTrue(Arrays.equals(new boolean[]{false, false, false, false, true}, response.getCardsToExchange()));
+		assertTrue(Arrays.equals(new boolean[]{false, false, false, true, false}, response.getCardsToExchange()));
 	}
 	
 	public void testOneAwayFromFlushExchangesOneCard() {
