@@ -2,7 +2,6 @@ package Strategy;
 
 import java.util.HashMap;
 import java.util.Map.Entry;
-
 import Model.*;
 import Strategy.HandIdentifier;
 
@@ -14,6 +13,9 @@ public class Exchange {
 			response.setCardsToExchange(new boolean[]{false, false, false, false, false});
 		} else if (isOneAwayFromFlush(hand)) {
 			response.setCardsToExchange(getMissingFlushCard(hand));
+			response.setNumExchanges(1);
+		} else if (isOneAwayFromFullHouse(hand)) {
+			response.setCardsToExchange(getMissingFullHouseCard(hand));
 			response.setNumExchanges(1);
 		}
 		return response;
@@ -29,7 +31,7 @@ public class Exchange {
 	}
 	
 	private static boolean isOneAwayFromFlush(Card[] hand) {
-		HashMap<Integer, Integer>  cardCount = cardsPerRank(hand);
+		HashMap<Integer, Integer>  cardCount = cardsPerSuit(hand);
 		
 		if (cardCount.containsValue(4)) {
 			return true;
@@ -37,8 +39,36 @@ public class Exchange {
 		return false;
 	}
 	
+	private static boolean isOneAwayFromFullHouse(Card[] hand) {
+		return (HandIdentifier.isThreeOfAKind(hand) || HandIdentifier.isTwoPair(hand));
+	}
+	
+	private static boolean[] getMissingFullHouseCard(Card[] hand) {
+		boolean[] cardsToExchange = new boolean[5];
+		HashMap<Integer, Integer>  cardCount = HandIdentifier.cardsPerRank(hand);
+		
+		// Find entry with lowest value
+		Entry<Integer, Integer> min = null;
+		for (Entry<Integer, Integer> entry : cardCount.entrySet()) {
+		    if (min == null || min.getValue() > entry.getValue()) {
+		        min = entry;
+		    }
+		}
+		
+		int lowestRank = min.getKey();
+		for (int i = 0; i < hand.length; i++) {
+			if (hand[i].getRank() == lowestRank) {
+				cardsToExchange[i] = true;
+			} else {
+				cardsToExchange[i] = false;
+			}
+		}
+		
+		return cardsToExchange;
+	}
+	
 	private static boolean[] getMissingFlushCard(Card[] hand) {
-		HashMap<Integer, Integer>  cardCount = cardsPerRank(hand);
+		HashMap<Integer, Integer>  cardCount = cardsPerSuit(hand);
 		
 		// Find entry with lowest value
 		Entry<Integer, Integer> min = null;
@@ -62,7 +92,7 @@ public class Exchange {
 		return cardsToExchange;
 	}
 	
-	private static HashMap<Integer, Integer> cardsPerRank(Card[] hand) {
+	private static HashMap<Integer, Integer> cardsPerSuit(Card[] hand) {
 		// [Card suit : Number of occurrences]
 		HashMap<Integer, Integer>  cardCount = new HashMap<>();
 		for (int i = 0; i < hand.length; i++) {

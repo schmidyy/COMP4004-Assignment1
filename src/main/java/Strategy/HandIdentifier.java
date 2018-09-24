@@ -12,7 +12,7 @@ public class HandIdentifier {
 		return (ranks[0] == 1 && ranks[1] == 10 && ranks[2] == 11 && ranks[3] == 12 && ranks[4] == 13);
 	}
 	
-	private static HashMap<Integer, Integer> cardsPerRank(Card[] hand) {
+	public static HashMap<Integer, Integer> cardsPerRank(Card[] hand) {
 		// [Card rank : Number of occurrences]
 		HashMap<Integer, Integer>  cardCount = new HashMap<>();
 		for (int i = 0; i < hand.length; i++) {

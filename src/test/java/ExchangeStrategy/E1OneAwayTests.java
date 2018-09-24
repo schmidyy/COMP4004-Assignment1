@@ -39,12 +39,12 @@ public class E1OneAwayTests extends TestCase {
 		hand[0] = new Card(13, 1); //KD
 		hand[1] = new Card(13, 2); //KC
 		hand[2] = new Card(13, 3); //KH
-		hand[3] = new Card(5, 4); //5S **
-		hand[4] = new Card(1, 1); //AD
+		hand[3] = new Card(5, 4); //5S
+		hand[4] = new Card(1, 1); //AD **
 		
 		ExchangeResponse response = Exchange.analyze(hand);
 		assertEquals(1, response.getNumExchanges());
-		assertTrue(Arrays.equals(new boolean[]{false, false, false, true, false}, response.getCardsToExchange()));
+		assertTrue(Arrays.equals(new boolean[]{false, false, false, false, true}, response.getCardsToExchange()));
 	}
 	
 	public void testOneAwayFromFlushExchangesOneCard() {
