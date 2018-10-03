@@ -10,6 +10,7 @@ import Strategy.HandIdentifier;
 
 public class Exchange {
 	
+	// Public Methods:
 	public static ExchangeResponse analyze(Card[] hand) {
 		ExchangeResponse response = new ExchangeResponse(null, 0);
 		if (isStraightOrBetter(hand)) {
@@ -23,10 +24,15 @@ public class Exchange {
 		} else if (isOneAwayFromStraight(hand)) {
 			response.setCardsToExchange(getMissingStraightCard(hand));
 			response.setNumExchanges(1);
+		} else if (isThreeOfTheSameSuit(hand)) {
+			response.setCardsToExchange(getMissingThreeOfTheSameSuitCards(hand));
+			response.setNumExchanges(2);
 		}
 		return response;
 	}
 	
+	// Private Methods:
+	// Identifying cases:
 	private static boolean isStraightOrBetter(Card[] hand) {
 		return (HandIdentifier.isRoyalFlush(hand) || 
 				HandIdentifier.isStraightFlush(hand) ||
@@ -77,11 +83,40 @@ public class Exchange {
 		}
 		
 		return (count1 == 4 || count2 == 4 || count3 == 4);
+	} 
+	
+	private static boolean isThreeOfTheSameSuit(Card[] hand) {
+		HashMap<Integer, Integer>  cardCount = cardsPerSuit(hand);
+		
+		if (cardCount.containsValue(3)) {
+			return true;
+		}
+		return false;		
 	}
 	
-	public static boolean contains(final int[] array, final int key) {  
-	     return IntStream.of(array).anyMatch(x -> x == key);
-	} 
+	// Array building methods:
+	private static boolean[] getMissingThreeOfTheSameSuitCards(Card[] hand) {
+		HashMap<Integer, Integer>  cardCount = cardsPerSuit(hand);
+		
+		Entry<Integer, Integer> max = null;
+		int maxSuit = 0;
+		for (Entry<Integer, Integer> entry : cardCount.entrySet()) {
+		    if (entry.getValue() == 3) {
+		        maxSuit = entry.getKey();
+		    }
+		}
+		
+		boolean[] cardsToExchange = new boolean[5];
+		for (int i = 0; i < hand.length; i++) {
+			if (hand[i].getSuit() != maxSuit) {
+				cardsToExchange[i] = true;
+			} else {
+				cardsToExchange[i] = false;
+			}
+		}
+		
+		return cardsToExchange;
+	}
 	
 	private static boolean[] getMissingFullHouseCard(Card[] hand) {
 		boolean[] cardsToExchange = new boolean[5];
@@ -203,6 +238,11 @@ public class Exchange {
 		}
 		
 		return cardsToExchange;
+	}
+	
+	// Helper Methods
+	private static boolean contains(final int[] array, final int key) {  
+	     return IntStream.of(array).anyMatch(x -> x == key);
 	}
 	
 	private static HashMap<Integer, Integer> cardsPerSuit(Card[] hand) {

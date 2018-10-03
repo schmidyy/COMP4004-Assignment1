@@ -13,7 +13,7 @@ public class E2ThreeOfTheSameSuitTests extends TestCase {
 		hand[0] = new Card(10, 1); //10D
 		hand[1] = new Card(11, 1); //JD
 		hand[2] = new Card(7, 2); //7C **
-		hand[3] = new Card(13, 4); //KH **
+		hand[3] = new Card(4, 4); //4H **
 		hand[4] = new Card(14, 1); //AD
 		
 		ExchangeResponse response = Exchange.analyze(hand);
@@ -26,7 +26,7 @@ public class E2ThreeOfTheSameSuitTests extends TestCase {
 		hand[0] = new Card(10, 1); //10D **
 		hand[1] = new Card(11, 3); //JS
 		hand[2] = new Card(7, 3); //7S
-		hand[3] = new Card(13, 3); //KS
+		hand[3] = new Card(10, 3); //10S
 		hand[4] = new Card(14, 1); //AD **
 		
 		ExchangeResponse response = Exchange.analyze(hand);
