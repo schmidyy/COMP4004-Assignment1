@@ -30,6 +30,9 @@ public class Exchange {
 		} else if (isThreeCardsInSequence(hand)) {
 			response.setCardsToExchange(getMissingThreeInSequenceCards(hand));
 			response.setNumExchanges(2);
+		} else if (isPair(hand)) {
+			response.setCardsToExchange(getMissingPairCard(hand));
+			response.setNumExchanges(3);
 		}
 		return response;
 	}
@@ -110,6 +113,23 @@ public class Exchange {
 			return true;
 		}
 		return false;		
+	}
+	
+	private static boolean isPair(Card[] hand) {
+		HashMap<Integer, Integer>  cardCount = HandIdentifier.cardsPerRank(hand);
+		
+		// Find entry with lowest value
+		Entry<Integer, Integer> max = null;
+		for (Entry<Integer, Integer> entry : cardCount.entrySet()) {
+		    if (max == null || max.getValue() < entry.getValue()) {
+		        max = entry;
+		    }
+		}
+		
+		if (max.getValue() == 2) {
+			return true;
+		}
+		return false;
 	}
 	
 	// Array building methods:
@@ -280,6 +300,28 @@ public class Exchange {
 			}
 		}
 		
+		return cardsToExchange;
+	}
+	
+	private static boolean[] getMissingPairCard(Card[] hand) {
+		HashMap<Integer, Integer>  cardCount = HandIdentifier.cardsPerRank(hand);
+		
+		// Find entry with lowest value
+		Entry<Integer, Integer> max = null;
+		for (Entry<Integer, Integer> entry : cardCount.entrySet()) {
+		    if (max == null || max.getValue() < entry.getValue()) {
+		        max = entry;
+		    }
+		}
+		
+		boolean[] cardsToExchange = new boolean[5];
+		for (int i = 0; i < hand.length; i++) {
+			if (hand[i].getRank() == max.getKey()) {
+				cardsToExchange[i] = false;
+			} else {
+				cardsToExchange[i] = true;
+			}
+		}
 		return cardsToExchange;
 	}
 	
