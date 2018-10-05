@@ -33,6 +33,9 @@ public class Exchange {
 		} else if (isPair(hand)) {
 			response.setCardsToExchange(getMissingPairCard(hand));
 			response.setNumExchanges(3);
+		} else {
+			response.setCardsToExchange(getMissingHighCardCards(hand));
+			response.setNumExchanges(3);
 		}
 		return response;
 	}
@@ -317,6 +320,27 @@ public class Exchange {
 		boolean[] cardsToExchange = new boolean[5];
 		for (int i = 0; i < hand.length; i++) {
 			if (hand[i].getRank() == max.getKey()) {
+				cardsToExchange[i] = false;
+			} else {
+				cardsToExchange[i] = true;
+			}
+		}
+		return cardsToExchange;
+	}
+	
+	private static boolean[] getMissingHighCardCards(Card[] hand) {
+		int[] ranks = new int[5];
+		for (int i = 0; i < hand.length; i++) {
+			ranks[i] = hand[i].getRank();
+		}
+		Arrays.sort(ranks);
+		
+		int highCard = ranks[4];
+		int highCard2 = ranks[3];
+		
+		boolean[] cardsToExchange = new boolean[5];
+		for (int i = 0; i < hand.length; i++) {
+			if (hand[i].getRank() == highCard || hand[i].getRank() == highCard2) {
 				cardsToExchange[i] = false;
 			} else {
 				cardsToExchange[i] = true;
