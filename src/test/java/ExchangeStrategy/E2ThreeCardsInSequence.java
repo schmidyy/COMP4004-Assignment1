@@ -12,7 +12,7 @@ public class E2ThreeCardsInSequence extends TestCase {
 		Card[] hand = new Card[5];
 		hand[0] = new Card(10, 1); //10D
 		hand[1] = new Card(11, 1); //JD
-		hand[2] = new Card(7, 2); //7C **
+		hand[2] = new Card(4, 2); //4C **
 		hand[3] = new Card(9, 4); //9H
 		hand[4] = new Card(14, 2); //AC **
 		
