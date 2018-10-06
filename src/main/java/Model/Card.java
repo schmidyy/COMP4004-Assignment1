@@ -34,6 +34,18 @@ public final class Card {
         this.rank = rank;
         this.suit = suit;
     }
+    
+    public Card(String card) {
+    	// SA -> Ace of Spades
+    	int suit = stringToSuit(Character.toString(card.charAt(0)));
+    	int rank = stringToRank(Character.toString(card.charAt(1)));
+    	
+    	assert isValidRank(rank);
+        assert isValidSuit(suit);
+    	
+    	this.rank = rank;
+    	this.suit = suit;
+    }
 
     public int getSuit() {
         return suit;
@@ -101,5 +113,53 @@ public final class Card {
         default:
             return null;
         }    
+    }
+    
+    public static int stringToRank(String rank) {
+    	switch(rank) {
+    	case "A":
+    		return 14;
+    	case "K":
+    		return 13;
+    	case "Q":
+    		return 12;
+    	case "J":
+    		return 11;
+    	case "T":
+    		return 10;
+    	case "9":
+    		return 9;
+    	case "8":
+    		return 8;
+    	case "7":
+    		return 7;
+    	case "6":
+    		return 6;
+    	case "5":
+    		return 5;
+    	case "4":
+    		return 4;
+    	case "3":
+    		return 3;
+    	case "2":
+    		return 2;
+    	default:
+    		return -1;
+    	}
+    }
+    
+    public static int stringToSuit(String suit) {
+    	switch(suit) {
+    	case "D":
+    		return 1;
+    	case "C":
+    		return 2;
+    	case "H":
+    		return 3;
+    	case "S":
+    		return 4;
+    	default:
+    		return -1;
+    	}
     }
 }
