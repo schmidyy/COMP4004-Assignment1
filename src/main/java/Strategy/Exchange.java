@@ -40,6 +40,21 @@ public class Exchange {
 		return response;
 	}
 	
+	public static Card[] exchange(Card[] aipHand, Card[] exchangeCards) {
+		ExchangeResponse response = Exchange.analyze(aipHand);
+		Card[] newHand = new Card[5];
+		int count = 0;
+		for (int i = 0; i < aipHand.length; i++) {
+			if (response.getCardsToExchange()[i] == true) {
+				newHand[i] = exchangeCards[count];
+				count++;
+			} else {
+				newHand[i] = aipHand[i];
+			}
+		}
+		return newHand;
+	}
+	
 	// Private Methods:
 	// Identifying cases:
 	private static boolean isStraightOrBetter(Card[] hand) {
