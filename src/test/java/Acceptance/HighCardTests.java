@@ -3,9 +3,8 @@ package Acceptance;
 import java.io.IOException;
 
 import Model.Card;
-import Model.ExchangeResponse;
 import Model.HandsFromInputFile;
-import Strategy.Exchange;
+import Model.Calculator;
 import junit.framework.TestCase;
 
 public class HighCardTests extends TestCase {
@@ -15,14 +14,14 @@ public class HighCardTests extends TestCase {
 		Card[] hand = gameHands[1]; //SA CQ D6 H9 S2
 		
 		long score = Calculator.score(hand);
-		assertEquals(score, 1412090602L);
+		assertEquals(score, 14120906021L);
 	}
 	
 	public void testHighCardComparator() throws IOException {
 		Card[][] gameHands = HandsFromInputFile.onLineNumber(5);
 		
 		Card[] aipHand = gameHands[0];
-		Card[] opponentHand = gameHands[2];
+		Card[] opponentHand = gameHands[1];
 		
 		assertTrue(Calculator.score(aipHand) > Calculator.score(opponentHand));
 	}
