@@ -14,7 +14,7 @@ public class HighCardTests extends TestCase {
 		Card[] hand = gameHands[1]; //SA CQ D6 H9 S2
 		
 		long score = Calculator.score(hand);
-		assertEquals(score, 14120906021L);
+		assertEquals(score, 14120906024L);
 	}
 	
 	public void testHighCardComparator() throws IOException {

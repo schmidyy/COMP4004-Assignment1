@@ -16,19 +16,16 @@ public class BoundaryTests extends TestCase {
 		long score1 = Calculator.score(spadesRoyalFlushHand);
 		long score2 = Calculator.score(clubsRoyalFlushHand);
 		
-		//TODO: Fix suits
 		assertTrue(score1 > score2);
 	}
 	
 	public void testHighestStraightFlushWins() throws IOException {
-		Card[][] straightFlushGame = HandsFromInputFile.onLineNumber(2);
-		Card[] fiveHighStraightFlushHand = Exchange.exchange(straightFlushGame[0], straightFlushGame[2]);
+		Card[] sixHighStraightFlush = HandsFromInputFile.onLineNumber(17)[1];
 		Card[] tenHighStraightFlush = HandsFromInputFile.onLineNumber(10)[1];
 		
 		long score1 = Calculator.score(tenHighStraightFlush);
-		long score2 = Calculator.score(fiveHighStraightFlushHand);
+		long score2 = Calculator.score(sixHighStraightFlush);
 		
-		//TODO: Fix Ace high straight
 		assertTrue(score1 > score2);
 	}
 	
@@ -39,7 +36,6 @@ public class BoundaryTests extends TestCase {
 		long score1 = Calculator.score(tenHighStraightFlushSpades);
 		long score2 = Calculator.score(tenHighStraightFlushHearts);
 		
-		//TODO: Fix suits
 		assertTrue(score1 > score2);
 	}
 	
@@ -80,7 +76,6 @@ public class BoundaryTests extends TestCase {
 		long score1 = Calculator.score(eightSpadesHighStraight);
 		long score2 = Calculator.score(eightClubsHighStraight);
 		
-		//TODO: Fix suits
 		assertTrue(score1 > score2);
 	}
 	
@@ -136,12 +131,11 @@ public class BoundaryTests extends TestCase {
 	
 	public void testHighestSuitedHighCardWins() throws IOException {
 		Card[] aceSpadesHighCard = HandsFromInputFile.onLineNumber(4)[1];
-		Card[] aceDiamondsHighCard = HandsFromInputFile.onLineNumber(14)[1];
+		Card[] aceDiamondsHighCard = HandsFromInputFile.onLineNumber(5)[1];
 		
 		long score1 = Calculator.score(aceSpadesHighCard);
 		long score2 = Calculator.score(aceDiamondsHighCard);
 		
-		//TODO: Fix suits
 		assertTrue(score1 > score2);
 	}
 	

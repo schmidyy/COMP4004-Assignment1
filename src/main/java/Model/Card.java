@@ -8,10 +8,10 @@ public final class Card {
     private final int suit;
 
     // Kinds of suits
-    public final static int DIAMONDS = 1; //3
-    public final static int CLUBS    = 2; //4
-    public final static int HEARTS   = 3; //2
-    public final static int SPADES   = 4; //1
+    public final static int DIAMONDS = 1; //2
+    public final static int CLUBS    = 2; //1
+    public final static int HEARTS   = 3; //3
+    public final static int SPADES   = 4; //4
 
     // Kinds of ranks
     public final static int DEUCE = 2;

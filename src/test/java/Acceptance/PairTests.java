@@ -13,7 +13,7 @@ public class PairTests extends TestCase {
 		Card[] hand = gameHands[0]; //DK HK HA C6 S4
 		
 		long score = Calculator.score(hand);
-		assertEquals(113131406042L, score);
+		assertEquals(113131406043L, score);
 	}
 	
 	public void testPairComparator() throws IOException {
