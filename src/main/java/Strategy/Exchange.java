@@ -1,5 +1,6 @@
 package Strategy;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map.Entry;
@@ -53,6 +54,17 @@ public class Exchange {
 			}
 		}
 		return newHand;
+	}
+	
+	public static ArrayList<Card> exchangedCards(Card[] hand) {
+		ExchangeResponse response = analyze(hand);
+		ArrayList<Card> exchangedCards = new ArrayList<Card>();
+		for (int i = 0; i < hand.length; i++) {
+			if (response.getCardsToExchange()[i] == true) {
+				exchangedCards.add(hand[i]);
+			}
+		}
+		return exchangedCards;
 	}
 	
 	// Private Methods:

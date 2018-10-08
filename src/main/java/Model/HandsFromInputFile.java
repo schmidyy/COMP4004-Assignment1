@@ -31,6 +31,13 @@ public class HandsFromInputFile {
 		return (new Card[][]{aipCards, opponentCards, exchangeCards});
 	}
 	
+	public static int lineCount() throws IOException {
+		String inputFile = readFile("src/test/resources/GameTests.txt");
+		String lines[] = inputFile.split("\\r?\\n");
+		
+		return lines.length;
+	}
+	
 	static String readFile(String fileName) throws IOException {
 	    BufferedReader br = new BufferedReader(new FileReader(fileName));
 	    try {
