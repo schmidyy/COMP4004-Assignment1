@@ -101,7 +101,7 @@ public class Calculator {
 		return "";
 	}
 	
-	private static String suitToScore(int suit) {
+	public static String suitToScore(int suit) {
 		switch (suit) {
 		case 1: return "2";
 		case 2: return "1";
