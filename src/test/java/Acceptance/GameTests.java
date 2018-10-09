@@ -66,4 +66,45 @@ public class GameTests extends TestCase {
 		assertTrue(HandIdentifier.isTwoPair(newAIPHand));
 	}
 	
+	public void testSuitsAreCorrectlyRanked() {
+		assertEquals("4", Calculator.suitToScore(4));
+		assertEquals("3", Calculator.suitToScore(3));
+		assertEquals("2", Calculator.suitToScore(1));
+		assertEquals("1", Calculator.suitToScore(2));
+	}
+	
+	public void testRanksAreCorrectlyRanked() {
+		assertTrue(Card.ACE > Card.KING &&
+				   Card.KING > Card.QUEEN &&
+				   Card.QUEEN > Card.JACK &&
+				   Card.JACK > Card.TEN &&
+				   Card.TEN > Card.NINE &&
+				   Card.NINE > Card.EIGHT &&
+				   Card.EIGHT > Card.SEVEN &&
+				   Card.SEVEN > Card.SIX &&
+				   Card.SIX > Card.FIVE &&
+				   Card.FIVE > Card.FOUR &&
+				   Card.FOUR > Card.THREE &&
+				   Card.THREE > Card.DEUCE);
+	}
+	
+	public void testHandRankingIsIndependantOfPlayer() throws IOException {
+		Card[][] gameHands = HandsFromInputFile.onLineNumber(18);
+		
+		Card[] aipHand = gameHands[0];
+		Card[] opponentHand = gameHands[1];
+		
+		assertEquals(Calculator.score(aipHand), Calculator.score(opponentHand));
+	}
+	
+	public void testHandRankingIsIndependantOfExchange() throws IOException {
+		Card[][] gameHands = HandsFromInputFile.onLineNumber(18);
+		
+		Card[] aipHand = gameHands[0];
+		Card[] exchangeCards = gameHands[2];
+		Card[] newAIPHand = Exchange.exchange(aipHand, exchangeCards);
+		
+		assertEquals(Calculator.score(aipHand), Calculator.score(newAIPHand));
+	}
+	
 }
