@@ -54,4 +54,15 @@ public class HandsFromInputFile {
 	        br.close();
 	    }
 	}
+	
+	public static Card[] handFromHandString(String handString) {
+		Card[] hand = new Card[5];
+		
+		String[] cards = handString.split("\\s+"); 
+		for (int i = 0; i < cards.length; i++) {
+			hand[i] = new Card(cards[i]);
+		}
+		
+		return hand;
+	}
 }

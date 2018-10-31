@@ -276,6 +276,8 @@ public class Exchange {
 			succesfullState = 1;
 		} else if (count2 == 4) {
 			succesfullState = 2;
+		} else if (count3 == 4){
+			succesfullState = 3;
 		} else {
 			succesfullState = 3;
 		}

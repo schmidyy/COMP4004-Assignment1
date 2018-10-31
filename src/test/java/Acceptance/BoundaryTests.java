@@ -3,7 +3,6 @@ package Acceptance;
 import java.io.IOException;
 import Model.Card;
 import Model.HandsFromInputFile;
-import Strategy.Exchange;
 import Model.Calculator;
 import junit.framework.TestCase;
 
